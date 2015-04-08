@@ -8,6 +8,9 @@
  * Implements hook_ctools_plugin_api().
  */
 function nycc_content_types_ctools_plugin_api($module = NULL, $api = NULL) {
+  if ($module == "context" && $api == "context") {
+    return array("version" => "3");
+  }
   if ($module == "strongarm" && $api == "strongarm") {
     return array("version" => "1");
   }
@@ -22,30 +25,6 @@ function nycc_content_types_node_info() {
       'name' => t('News'),
       'base' => 'node_content',
       'description' => t('Create a news article and specify where you\'d like it to appear (ie. corporate or service news).'),
-      'has_title' => '1',
-      'title_label' => t('Title'),
-      'help' => '',
-    ),
-    'bulk_file_upload' => array(
-      'name' => t('Bulk file upload'),
-      'base' => 'node_content',
-      'description' => t('Upload multiple files at once.'),
-      'has_title' => '1',
-      'title_label' => t('Title'),
-      'help' => '',
-    ),
-    'event_calendar' => array(
-      'name' => t('Event Calendar'),
-      'base' => 'node_content',
-      'description' => t('A content type to create events for calendar.'),
-      'has_title' => '1',
-      'title_label' => t('Event Title'),
-      'help' => '',
-    ),
-    'intranet_group' => array(
-      'name' => t('Intranet Group'),
-      'base' => 'node_content',
-      'description' => t('Create a group to allow members to receive alerts and access specific forums.'),
       'has_title' => '1',
       'title_label' => t('Title'),
       'help' => '',
@@ -78,14 +57,6 @@ function nycc_content_types_node_info() {
       'name' => t('Policy'),
       'base' => 'node_content',
       'description' => t('Use this option to create a web version of a policy (rather than a pdf/word document).'),
-      'has_title' => '1',
-      'title_label' => t('Title'),
-      'help' => '',
-    ),
-    'top_task' => array(
-      'name' => t('Top task'),
-      'base' => 'node_content',
-      'description' => t('Add new top tasks items here.'),
       'has_title' => '1',
       'title_label' => t('Title'),
       'help' => '',
